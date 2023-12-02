@@ -17,7 +17,7 @@ DIGIT_REGEX=f"(?=([1-9]|{DIGIT_STRINGS}))"
 
 def get_line_digits(sum, line):
     matches = re.findall(DIGIT_REGEX, line)
-    return sum + int("".join([str(w2n.word_to_num(matches[0])), str(w2n.word_to_num(matches[-1]))]))
+    return sum + int("".join([str(w2n.word_to_num(match)) for match in [matches[0], matches[-1]]]))
 
 with open('input.txt') as file:
     print(reduce(get_line_digits, file, 0));
